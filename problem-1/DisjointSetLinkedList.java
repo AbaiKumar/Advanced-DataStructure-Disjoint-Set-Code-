@@ -1,5 +1,6 @@
 /*  Author : Abaikumar
  *  Problem statement : MakeSet, Find and Union using linked lists
+ *  References : https://www.geeksforgeeks.org/linked-list-representation-disjoint-set-data-structures/
  */
 
 class Node { // node
@@ -30,7 +31,7 @@ class DisjointSet {
   public Node findSet(int x) {
     Node current = nodes[x];
     while (current.next != current) {
-      current = current.next;
+      current = current.next;// find representative node
     }
     return current;
   }
@@ -40,7 +41,7 @@ class DisjointSet {
     Node ySet = findSet(y);
 
     if (xSet != ySet) {
-      xSet.next = ySet;
+      xSet.next = ySet; // join operation
     }
   }
 }
@@ -48,17 +49,22 @@ class DisjointSet {
 public class DisjointSetLinkedList {
 
   public static void main(String[] args) {
-    int n = 5;
+    int n = 5;// no of elements
     DisjointSet uf = new DisjointSet(n);
+
     for (int i = 0; i < n; i++) {
       uf.makeSet(i);
     }
-    System.out.println("\nPerfoming Union(0, 1) and Union(2,3)");
+    for (int i = 0; i < n; i++) {
+      System.out.println("Initial Representative of " + i + " is '" + uf.findSet(i).data + "'");
+    }
+
+    System.out.println("\nAfter performing Union(0, 1) and Union(2,3) operations:\n");
     uf.union(0, 1);
     uf.union(2, 3);
 
     for (int i = 0; i < n; i++) {
-      System.out.println(uf.findSet(i).data);
+      System.out.println("Representative of " + i + " is '" + uf.findSet(i).data + "'");
     }
   }
 }

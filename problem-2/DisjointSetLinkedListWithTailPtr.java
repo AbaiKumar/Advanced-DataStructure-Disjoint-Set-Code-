@@ -2,7 +2,7 @@
  *  Problem statement : Variation of 1 with tail pointer
  */
 
-class Node {
+class Node {// node
     int val;
     Node next, rep;
 
@@ -18,7 +18,6 @@ class SetItem {
 
 // To represent union SetItem
 class DisjointSet {
-
     SetItem arr[];
 
     DisjointSet(int n) {
@@ -47,9 +46,8 @@ class DisjointSet {
         return null;
     }
 
-    // union function for joining two subSetItems
-    // of a universe. Merges SetItem2 into SetItem1
-    // and deletes SetItem1.
+    // union function for joining two subSetItems of a universe. Merges SetItem2
+    // into SetItem1
     public void union(int x, int y) {
         SetItem set1 = find(x);
         SetItem set2 = find(y);
@@ -79,25 +77,21 @@ public class DisjointSetLinkedListWithTailPtr {
         }
 
         for (int i = 0; i < n; i++) {
-            System.out.println("find(" + i + ") " + a.find(i).head.rep.val);
+            System.out.println("Initial Representative of " + i + " is '" + a.find(i).head.rep.val + "'");
         }
-        System.out.println("\nPerfoming Union(0, 1)");
+        System.out.println("\nAfter performing Union(0, 1) and Union(2,3):\n");
         a.union(0, 1);
-
-        for (int i = 0; i < n; i++) {
-            System.out.println("find(" + i + ") " + a.find(i).head.rep.val);
-        }
-        System.out.println("\nPerfoming Union(0, 1)");
         a.union(2, 3);
 
         for (int i = 0; i < n; i++) {
-            System.out.println("find(" + i + ") " + a.find(i).head.rep.val);
+            System.out.println("Representative of " + i + " is '" + a.find(i).head.rep.val + "'");
         }
-        System.out.println("\nPerfoming Union(0, 3)");
+
+        System.out.println("\nAfter perfomring Union(0, 3):\n");
         a.union(0, 3);
 
         for (int i = 0; i < n; i++) {
-            System.out.println("find(" + i + ") " + a.find(i).head.rep.val);
+            System.out.println("Representative of " + i + " is '" + a.find(i).head.rep.val + "'");
         }
     }
 }

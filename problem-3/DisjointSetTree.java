@@ -53,12 +53,18 @@ public class DisjointSetTree {
             uf.makeSet(i);
         }
 
+        for (int i = 0; i < n; i++) {
+            System.out.println("Initial Representative of " + i + " is '" + uf.findSet(i).data + "'");
+        }
+
+        System.out.println("\nAfter performing Union(0, 1), Union(2,3) and Union(0,2) operations:\n");
+
         uf.union(0, 1);
         uf.union(2, 3);
         uf.union(0, 2);
 
         for (int i = 0; i < n; i++) {
-            System.out.println(uf.findSet(i).data); // 8
+            System.out.println("Initial Representative of " + i + " is '" + uf.findSet(i).data + "'");
         }
     }
 }
